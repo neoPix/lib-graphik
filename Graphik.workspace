@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="Graphik" Database="">
+  <Project Name="Graphik" Path="Graphik/Graphik.project" Active="No"/>
+  <Project Name="app" Path="app/app.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="Graphik" ConfigName="Debug"/>
+      <Project Name="app" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="Graphik" ConfigName="Release"/>
+      <Project Name="app" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

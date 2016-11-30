@@ -1,0 +1,21 @@
+#ifndef STATEMANAGER_H
+#define STATEMANAGER_H
+
+#include "state.h"
+
+namespace Graphik {
+class StateManager
+{
+    public:
+        StateManager();
+        virtual ~StateManager();
+
+        void change(State &state);
+        bool update();
+    protected:
+    private:
+        State *m_state;
+};
+}
+
+#endif // STATEMANAGER_H
