@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=David
-Date                   :=30/11/16
+Date                   :=01/12/16
 CodeLitePath           :=/home/david/.codelite
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
@@ -60,7 +60,7 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/src_context.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_timemanager.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_memorycounter.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_states_state.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_states_statemanager.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_object_object.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_mesh_mesh.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_shader_shader.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/src_context.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_timemanager.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_memorycounter.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_states_state.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_states_statemanager.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_object_object.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_mesh_mesh.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_shader_shader.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_stream_textfile.cpp$(ObjectSuffix) 
 
 
 
@@ -156,6 +156,14 @@ $(IntermediateDirectory)/src_shader_shader.cpp$(DependSuffix): src/shader/shader
 
 $(IntermediateDirectory)/src_shader_shader.cpp$(PreprocessSuffix): src/shader/shader.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_shader_shader.cpp$(PreprocessSuffix)src/shader/shader.cpp
+
+$(IntermediateDirectory)/src_stream_textfile.cpp$(ObjectSuffix): src/stream/textfile.cpp $(IntermediateDirectory)/src_stream_textfile.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david/projects/Graphik/Graphik/src/stream/textfile.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_stream_textfile.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_stream_textfile.cpp$(DependSuffix): src/stream/textfile.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_stream_textfile.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/src_stream_textfile.cpp$(DependSuffix) -MM src/stream/textfile.cpp
+
+$(IntermediateDirectory)/src_stream_textfile.cpp$(PreprocessSuffix): src/stream/textfile.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_stream_textfile.cpp$(PreprocessSuffix)src/stream/textfile.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
