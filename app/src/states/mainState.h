@@ -16,4 +16,5 @@ private:
     Graphik::Mesh *m_mesh;
     Graphik::Shader *m_shader;
     Graphik::Object *m_object;
+    Graphik::Texture *m_texture;
 };

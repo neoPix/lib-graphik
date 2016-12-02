@@ -11,7 +11,11 @@
 
 #include "mesh/vertex.h"
 #include "mesh/mesh.h"
+
 #include "shader/shader.h"
+
+#include "texture/texture.h"
+
 #include "object/object.h"
 
 #include "context.h"
