@@ -11,6 +11,7 @@ public:
 
 Graphik::Texture::Texture(const std::string &path) {
     TextureData* data = new TextureData();
+    this->m_data = data;
     
     int width, height, numComponents;
     unsigned char* imageData = stbi_load(path.c_str(), &width, &height, &numComponents, 4);
