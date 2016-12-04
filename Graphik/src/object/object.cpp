@@ -1,4 +1,5 @@
 #include "object/object.h"
+#include "transform/transform.h"
 
 Graphik::Object::Object() : m_mesh(nullptr), m_shader(nullptr), m_texture(nullptr) {
 }
@@ -8,6 +9,7 @@ Graphik::Object::~Object() {
 
 void Graphik::Object::draw() {
     if(this->m_shader) {
+        this->m_shader->update(this->m_transform);
         this->m_shader->bind();
     }
     if(this->m_texture) {
@@ -42,5 +44,14 @@ const Graphik::Texture* Graphik::Object::texture() {
 
 Graphik::Object* Graphik::Object::texture(Graphik::Texture* texture) {
     this->m_texture = texture;
+    return this;
+}
+
+Graphik::Transform& Graphik::Object::transform() {
+    return this->m_transform;
+}
+
+Graphik::Object* Graphik::Object::transform(const Graphik::Transform& transform) {
+    this->m_transform = transform;
     return this;
 }

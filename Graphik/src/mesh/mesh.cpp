@@ -31,8 +31,8 @@ Graphik::Mesh::Mesh(Vertex* vertices, unsigned int count)
     textcoords.reserve(count);
     
     for(int i = 0; i < count; i++) {
-        positions.push_back(*vertices[i].pos());
-        textcoords.push_back(*vertices[i].texCoord());
+        positions.push_back(vertices[i].pos());
+        textcoords.push_back(vertices[i].texCoord());
     }
     
     glGenVertexArrays(1, &data->m_vertexArrayObject);

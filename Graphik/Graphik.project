@@ -33,6 +33,9 @@
     <VirtualDirectory Name="texture">
       <File Name="src/texture/texture.cpp"/>
     </VirtualDirectory>
+    <VirtualDirectory Name="transform">
+      <File Name="src/transform/transform.cpp"/>
+    </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="include">
     <File Name="include/context.h"/>
@@ -62,6 +65,9 @@
     </VirtualDirectory>
     <VirtualDirectory Name="texture">
       <File Name="include/texture/texture.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="transform">
+      <File Name="include/transform/transform.h"/>
     </VirtualDirectory>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>

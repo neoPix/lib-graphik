@@ -2,6 +2,7 @@
 #define SHADER
 
 #include <string>
+#include "transform/transform.h"
 
 namespace Graphik
 {
@@ -12,6 +13,7 @@ namespace Graphik
         virtual ~Shader();
         
         void bind();
+        void update(const Transform& transform);
     private:
         void* m_data;
     };
