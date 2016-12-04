@@ -13,15 +13,36 @@ MainState::MainState(Graphik::Context *ctx) : m_ctx(ctx)
                     ->texture(this->m_texture);
 }
 
-MainState::~MainState()
-{
+MainState::~MainState() {
     delete this->m_object;
     delete this->m_mesh;
     delete this->m_shader;
     delete this->m_texture;
 }
 
-void MainState::draw(){
+void MainState::init(){
+}
+
+float counter = 0.f;
+
+bool MainState::update() {
+    
+    float sinCounter = sinf(counter),
+        cosCounter = cosf(counter);
+    
+    glm::vec3 scale(cosCounter);
+    
+    this->m_object->transform().pos().x = sinCounter;
+    this->m_object->transform().rot().x = counter * 10;
+    this->m_object->transform().rot().z = counter * 25;
+    this->m_object->transform().scale(scale);
+    
+    counter += 0.0025f;
+    
+    return true;
+}
+
+void MainState::draw() {
     this->m_ctx->clear(0,0,0,1);
     this->m_object->draw();
 }

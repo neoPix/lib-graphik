@@ -7,10 +7,16 @@
 
 const unsigned int NUM_SHADERS = 2;
 
+enum {
+    TRANSFORM_U,
+    NUM_UNIFORMS
+};
+
 struct ShaderData {
 public :
     unsigned int m_program;
     unsigned int m_shaders[NUM_SHADERS];
+    unsigned int m_uniforms[NUM_UNIFORMS];
 };
 
 void checkShader(GLuint shader, GLuint flag, bool isProgram, const std::string& errorMessage)
@@ -74,6 +80,8 @@ Graphik::Shader::Shader(const std::string& shader) {
     
     glValidateProgram(data->m_program);
     checkShader(data->m_program, GL_LINK_STATUS, true, "Invalid shader program");
+
+    data->m_uniforms[TRANSFORM_U] = glGetUniformLocation(data->m_program, "transform");
 }
 
 Graphik::Shader::~Shader() {
@@ -93,4 +101,10 @@ Graphik::Shader::~Shader() {
 void Graphik::Shader::bind() {
     ShaderData* data = static_cast<ShaderData*>(this->m_data);
     glUseProgram(data->m_program);
+}
+
+void Graphik::Shader::update(const Graphik::Transform& transform) {
+    glm::mat4 model = transform.matrix();
+    ShaderData* data = static_cast<ShaderData*>(this->m_data);
+    glUniformMatrix4fv(data->m_uniforms[TRANSFORM_U], 1, GL_FALSE, &model[0][0]);
 }

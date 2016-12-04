@@ -16,8 +16,8 @@ namespace Graphik
             this->m_texCoord.x = texX;
             this->m_texCoord.y = texY;
         }
-        inline glm::vec3* pos() {return &this->m_pos;}
-        inline glm::vec2* texCoord() {return &this->m_texCoord;}
+        inline glm::vec3& pos() {return this->m_pos;}
+        inline glm::vec2& texCoord() {return this->m_texCoord;}
         
     private:
         glm::vec3 m_pos;

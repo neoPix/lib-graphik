@@ -5,10 +5,8 @@ public:
     MainState(Graphik::Context *ctx);
     virtual ~MainState();
 
-    virtual void init(){};
-    virtual bool update() {
-        return true;
-    };
+    virtual void init();
+    virtual bool update();
     virtual void draw();
     virtual void exit(){};
 private:

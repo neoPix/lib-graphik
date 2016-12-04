@@ -24,10 +24,14 @@ namespace Graphik
         const Texture* texture();
         Object* texture(Texture* texture);
         
+        Transform& transform();
+        Object* transform(const Transform& transform);
+        
     private:
         Mesh *m_mesh;
         Shader *m_shader;
         Texture *m_texture;
+        Transform m_transform;
     };
 }
 #endif
