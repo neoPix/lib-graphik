@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ Graphik - Debug ]----------"
-	@cd "Graphik" && "$(MAKE)" -f  "Graphik.mk"
+	@echo "----------Building project:[ app - Debug ]----------"
+	@cd "app" && "$(MAKE)" -f  "app.mk"
 clean:
-	@echo "----------Cleaning project:[ Graphik - Debug ]----------"
-	@cd "Graphik" && "$(MAKE)" -f  "Graphik.mk" clean
+	@echo "----------Cleaning project:[ app - Debug ]----------"
+	@cd "app" && "$(MAKE)" -f  "app.mk" clean

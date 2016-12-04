@@ -1,6 +1,7 @@
 #ifndef MESH
 #define MESH
 
+#include <glm/matrix.hpp>
 #include "vertex.h"
 
 namespace Graphik

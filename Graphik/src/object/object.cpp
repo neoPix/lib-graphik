@@ -1,6 +1,6 @@
 #include "object/object.h"
 
-Graphik::Object::Object() : m_mesh(nullptr), m_shader(nullptr) {
+Graphik::Object::Object() : m_mesh(nullptr), m_shader(nullptr), m_texture(nullptr) {
 }
 
 Graphik::Object::~Object() {
@@ -9,6 +9,9 @@ Graphik::Object::~Object() {
 void Graphik::Object::draw() {
     if(this->m_shader) {
         this->m_shader->bind();
+    }
+    if(this->m_texture) {
+        this->m_texture->bind(0);
     }
     if(this->m_mesh) {
         this->m_mesh->draw();
@@ -30,5 +33,14 @@ const Graphik::Shader* Graphik::Object::shader() {
 
 Graphik::Object* Graphik::Object::shader(Graphik::Shader* shader) {
     this->m_shader = shader;
+    return this;
+}
+
+const Graphik::Texture* Graphik::Object::texture() {
+    return this->m_texture;
+}
+
+Graphik::Object* Graphik::Object::texture(Graphik::Texture* texture) {
+    this->m_texture = texture;
     return this;
 }
