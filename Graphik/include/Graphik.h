@@ -16,6 +16,9 @@
 
 #include "texture/texture.h"
 
+#include "camera/camera.h"
+#include "transform/transform.h"
+
 #include "object/object.h"
 
 #include "context.h"

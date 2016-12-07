@@ -3,6 +3,7 @@
 
 #include <string>
 #include "transform/transform.h"
+#include "camera/camera.h"
 
 namespace Graphik
 {
@@ -13,7 +14,7 @@ namespace Graphik
         virtual ~Shader();
         
         void bind();
-        void update(const Transform& transform);
+        void update(const Transform& transform, const Camera& cam);
     private:
         void* m_data;
     };

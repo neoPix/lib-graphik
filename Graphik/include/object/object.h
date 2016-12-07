@@ -4,6 +4,7 @@
 #include "mesh/mesh.h"
 #include "shader/shader.h"
 #include "texture/texture.h"
+#include "camera/camera.h"
 
 namespace Graphik
 {
@@ -13,7 +14,7 @@ namespace Graphik
         Object();
         virtual ~Object();
         
-        void draw();
+        void draw(const Camera& cam);
         
         const Mesh* mesh();
         Object* mesh(Mesh* mesh);

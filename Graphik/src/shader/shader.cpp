@@ -103,8 +103,8 @@ void Graphik::Shader::bind() {
     glUseProgram(data->m_program);
 }
 
-void Graphik::Shader::update(const Graphik::Transform& transform) {
-    glm::mat4 model = transform.matrix();
+void Graphik::Shader::update(const Graphik::Transform& transform, const Graphik::Camera& cam) {
+    glm::mat4 model = cam.projection() * transform.matrix();
     ShaderData* data = static_cast<ShaderData*>(this->m_data);
     glUniformMatrix4fv(data->m_uniforms[TRANSFORM_U], 1, GL_FALSE, &model[0][0]);
 }

@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=David
-Date                   :=04/12/16
+Date                   :=07/12/16
 CodeLitePath           :=/home/david/.codelite
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
@@ -61,7 +61,7 @@ AS       := /usr/bin/as
 ##
 CodeLiteDir:=/usr/share/codelite
 Objects0=$(IntermediateDirectory)/src_context.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_timemanager.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_memorycounter.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_states_state.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_states_statemanager.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_object_object.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_mesh_mesh.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_shader_shader.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_stream_textfile.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_libs_stb_image.c$(ObjectSuffix) \
-	$(IntermediateDirectory)/src_texture_texture.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_transform_transform.cpp$(ObjectSuffix) 
+	$(IntermediateDirectory)/src_texture_texture.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_transform_transform.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_camera_camera.cpp$(ObjectSuffix) 
 
 
 
@@ -189,6 +189,14 @@ $(IntermediateDirectory)/src_transform_transform.cpp$(DependSuffix): src/transfo
 
 $(IntermediateDirectory)/src_transform_transform.cpp$(PreprocessSuffix): src/transform/transform.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_transform_transform.cpp$(PreprocessSuffix)src/transform/transform.cpp
+
+$(IntermediateDirectory)/src_camera_camera.cpp$(ObjectSuffix): src/camera/camera.cpp $(IntermediateDirectory)/src_camera_camera.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david/projects/Graphik/Graphik/src/camera/camera.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_camera_camera.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_camera_camera.cpp$(DependSuffix): src/camera/camera.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_camera_camera.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/src_camera_camera.cpp$(DependSuffix) -MM src/camera/camera.cpp
+
+$(IntermediateDirectory)/src_camera_camera.cpp$(PreprocessSuffix): src/camera/camera.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_camera_camera.cpp$(PreprocessSuffix)src/camera/camera.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

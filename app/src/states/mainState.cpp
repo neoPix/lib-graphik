@@ -35,7 +35,7 @@ bool MainState::update() {
     this->m_object->transform().pos().x = sinCounter;
     this->m_object->transform().rot().x = counter * 10;
     this->m_object->transform().rot().z = counter * 25;
-    this->m_object->transform().scale(scale);
+    //this->m_object->transform().scale(scale);
     
     counter += 0.0025f;
     
@@ -44,5 +44,5 @@ bool MainState::update() {
 
 void MainState::draw() {
     this->m_ctx->clear(0,0,0,1);
-    this->m_object->draw();
+    this->m_object->draw(this->m_camera);
 }

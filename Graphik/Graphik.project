@@ -36,6 +36,9 @@
     <VirtualDirectory Name="transform">
       <File Name="src/transform/transform.cpp"/>
     </VirtualDirectory>
+    <VirtualDirectory Name="camera">
+      <File Name="src/camera/camera.cpp"/>
+    </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="include">
     <File Name="include/context.h"/>
@@ -68,6 +71,9 @@
     </VirtualDirectory>
     <VirtualDirectory Name="transform">
       <File Name="include/transform/transform.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="camera">
+      <File Name="include/camera/camera.h"/>
     </VirtualDirectory>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>

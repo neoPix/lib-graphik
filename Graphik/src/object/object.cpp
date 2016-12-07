@@ -7,9 +7,9 @@ Graphik::Object::Object() : m_mesh(nullptr), m_shader(nullptr), m_texture(nullpt
 Graphik::Object::~Object() {
 }
 
-void Graphik::Object::draw() {
+void Graphik::Object::draw(const Camera& cam) {
     if(this->m_shader) {
-        this->m_shader->update(this->m_transform);
+        this->m_shader->update(this->m_transform, cam);
         this->m_shader->bind();
     }
     if(this->m_texture) {
