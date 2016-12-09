@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=David
-Date                   :=07/12/16
+Date                   :=09/12/16
 CodeLitePath           :=/home/david/.codelite
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
@@ -60,8 +60,8 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/src_context.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_timemanager.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_memorycounter.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_states_state.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_states_statemanager.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_object_object.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_mesh_mesh.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_shader_shader.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_stream_textfile.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_libs_stb_image.c$(ObjectSuffix) \
-	$(IntermediateDirectory)/src_texture_texture.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_transform_transform.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_camera_camera.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/src_context.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_timemanager.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_memorycounter.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_states_state.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_states_statemanager.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_object_object.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_mesh_mesh.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_mesh_indexedmodel.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_shader_shader.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_stream_textfile.cpp$(ObjectSuffix) \
+	$(IntermediateDirectory)/src_libs_stb_image.c$(ObjectSuffix) $(IntermediateDirectory)/src_texture_texture.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_transform_transform.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_camera_camera.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_mesh_loaders_Loader_OBJ.cpp$(ObjectSuffix) 
 
 
 
@@ -150,6 +150,14 @@ $(IntermediateDirectory)/src_mesh_mesh.cpp$(DependSuffix): src/mesh/mesh.cpp
 $(IntermediateDirectory)/src_mesh_mesh.cpp$(PreprocessSuffix): src/mesh/mesh.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_mesh_mesh.cpp$(PreprocessSuffix)src/mesh/mesh.cpp
 
+$(IntermediateDirectory)/src_mesh_indexedmodel.cpp$(ObjectSuffix): src/mesh/indexedmodel.cpp $(IntermediateDirectory)/src_mesh_indexedmodel.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david/projects/Graphik/Graphik/src/mesh/indexedmodel.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_mesh_indexedmodel.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_mesh_indexedmodel.cpp$(DependSuffix): src/mesh/indexedmodel.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_mesh_indexedmodel.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/src_mesh_indexedmodel.cpp$(DependSuffix) -MM src/mesh/indexedmodel.cpp
+
+$(IntermediateDirectory)/src_mesh_indexedmodel.cpp$(PreprocessSuffix): src/mesh/indexedmodel.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_mesh_indexedmodel.cpp$(PreprocessSuffix)src/mesh/indexedmodel.cpp
+
 $(IntermediateDirectory)/src_shader_shader.cpp$(ObjectSuffix): src/shader/shader.cpp $(IntermediateDirectory)/src_shader_shader.cpp$(DependSuffix)
 	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david/projects/Graphik/Graphik/src/shader/shader.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_shader_shader.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/src_shader_shader.cpp$(DependSuffix): src/shader/shader.cpp
@@ -197,6 +205,14 @@ $(IntermediateDirectory)/src_camera_camera.cpp$(DependSuffix): src/camera/camera
 
 $(IntermediateDirectory)/src_camera_camera.cpp$(PreprocessSuffix): src/camera/camera.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_camera_camera.cpp$(PreprocessSuffix)src/camera/camera.cpp
+
+$(IntermediateDirectory)/src_mesh_loaders_Loader_OBJ.cpp$(ObjectSuffix): src/mesh/loaders/Loader_OBJ.cpp $(IntermediateDirectory)/src_mesh_loaders_Loader_OBJ.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david/projects/Graphik/Graphik/src/mesh/loaders/Loader_OBJ.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_mesh_loaders_Loader_OBJ.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_mesh_loaders_Loader_OBJ.cpp$(DependSuffix): src/mesh/loaders/Loader_OBJ.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_mesh_loaders_Loader_OBJ.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/src_mesh_loaders_Loader_OBJ.cpp$(DependSuffix) -MM src/mesh/loaders/Loader_OBJ.cpp
+
+$(IntermediateDirectory)/src_mesh_loaders_Loader_OBJ.cpp$(PreprocessSuffix): src/mesh/loaders/Loader_OBJ.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_mesh_loaders_Loader_OBJ.cpp$(PreprocessSuffix)src/mesh/loaders/Loader_OBJ.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

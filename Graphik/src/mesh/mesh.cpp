@@ -1,12 +1,17 @@
 #include <GL/glew.h>
-#include "mesh/mesh.h"
 #include <glm/vec3.hpp>
 #include <glm/vec2.hpp>
 #include <vector>
 
+#include "mesh/mesh.h"
+#include "./loaders/Loader_OBJ.h"
+
 enum {
     POSITION_VB,
     TEXTCOORD_VB,
+    
+    INDEX_VB,
+    
     NUM_BUFFERS
 };
 
@@ -17,36 +22,32 @@ public :
     unsigned int m_drawCount;
 };
 
-Graphik::Mesh::Mesh(Vertex* vertices, unsigned int count)
-    : m_data(nullptr)
-{
+Graphik::Mesh::Mesh(const std::string &path) {
+    Graphik::IndexedModel model = OBJModel(path).ToIndexedModel();
+    this->indexedModel(model);
+}
+
+void Graphik::Mesh::indexedModel(const Graphik::IndexedModel &model) {
+    
     MeshData* data = new MeshData();
-    data->m_drawCount = count;
+    data->m_drawCount = model.indices.size();
     this->m_data = data;
-    
-    std::vector<glm::vec3> positions;
-    std::vector<glm::vec2> textcoords;
-    
-    positions.reserve(count);
-    textcoords.reserve(count);
-    
-    for(int i = 0; i < count; i++) {
-        positions.push_back(vertices[i].pos());
-        textcoords.push_back(vertices[i].texCoord());
-    }
     
     glGenVertexArrays(1, &data->m_vertexArrayObject);
     glBindVertexArray(data->m_vertexArrayObject);
 
     glGenBuffers(NUM_BUFFERS, data->m_vertexArrayBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, data->m_vertexArrayBuffer[POSITION_VB]);
-    glBufferData(GL_ARRAY_BUFFER, count * sizeof(positions[0]), &positions[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, model.positions.size() * sizeof(model.positions[0]), &model.positions[0], GL_STATIC_DRAW);
     
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
     
     glBindBuffer(GL_ARRAY_BUFFER, data->m_vertexArrayBuffer[TEXTCOORD_VB]);
-    glBufferData(GL_ARRAY_BUFFER, count * sizeof(textcoords[0]), &textcoords[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, model.texCoords.size() * sizeof(model.texCoords[0]), &model.texCoords[0], GL_STATIC_DRAW);
+    
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, data->m_vertexArrayBuffer[INDEX_VB]);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, model.indices.size() * sizeof(model.indices[0]), &model.indices[0], GL_STATIC_DRAW);
     
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
@@ -67,6 +68,6 @@ void Graphik::Mesh::draw() {
     MeshData* data = static_cast<MeshData*>(this->m_data);
     
     glBindVertexArray(data->m_vertexArrayObject);
-    glDrawArrays(GL_TRIANGLES, 0, data->m_drawCount);
+    glDrawElements(GL_TRIANGLES, data->m_drawCount, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 }

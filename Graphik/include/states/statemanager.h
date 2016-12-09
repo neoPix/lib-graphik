@@ -9,9 +9,11 @@ class StateManager
     public:
         StateManager();
         virtual ~StateManager();
-
+        
+        void exit();
         void change(State &state);
         bool update();
+        void draw();
     protected:
     private:
         State *m_state;

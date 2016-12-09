@@ -13,6 +13,9 @@ Graphik::TimeManager::TimeManager() : m_appTime(0), m_renderDuration(0), m_start
     this->m_appTime = this->m_started;
 }
 
+Graphik::TimeManager::~TimeManager() {
+}
+
 void Graphik::TimeManager::update()
 {
     unsigned long now = getCurrentTime();

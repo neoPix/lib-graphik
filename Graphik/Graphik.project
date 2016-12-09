@@ -20,6 +20,11 @@
     </VirtualDirectory>
     <VirtualDirectory Name="mesh">
       <File Name="src/mesh/mesh.cpp"/>
+      <VirtualDirectory Name="loaders">
+        <File Name="src/mesh/loaders/Loader_OBJ.h"/>
+        <File Name="src/mesh/loaders/Loader_OBJ.cpp"/>
+      </VirtualDirectory>
+      <File Name="src/mesh/indexedmodel.cpp"/>
     </VirtualDirectory>
     <VirtualDirectory Name="shader">
       <File Name="src/shader/shader.cpp"/>
@@ -56,6 +61,7 @@
     <VirtualDirectory Name="mesh">
       <File Name="include/mesh/mesh.h"/>
       <File Name="include/mesh/vertex.h"/>
+      <File Name="include/mesh/indexedmodel.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="shader">
       <File Name="include/shader/shader.h"/>

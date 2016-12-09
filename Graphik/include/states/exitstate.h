@@ -5,10 +5,10 @@ namespace Graphik {
 class ExitState : State
 {
     public:
-        virtual void init() {}
-        virtual bool update() { return false; }
-        virtual void draw() {}
-        virtual void exit() {}
+        void init() {}
+        bool update() { return false; }
+        void draw() const {}
+        void exit() {}
     protected:
     private:
 };

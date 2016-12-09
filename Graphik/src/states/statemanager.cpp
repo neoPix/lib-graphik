@@ -6,8 +6,12 @@ Graphik::StateManager::StateManager() : m_state(nullptr)
 
 Graphik::StateManager::~StateManager()
 {
+    this->exit();
+}
+
+void Graphik::StateManager::exit() {
     if(this->m_state) {
-        this->m_state->exit();
+        //this->m_state->exit();
         this->m_state = nullptr;
     }
 }
@@ -27,9 +31,14 @@ bool Graphik::StateManager::update() {
             this->m_state = nullptr;
         }
         else {
-            this->m_state->draw();
             return true;
         }
     }
     return false;
+}
+
+void Graphik::StateManager::draw() {
+    if(this->m_state) {
+        this->m_state->draw();
+    }
 }

@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <new>
+#include <iostream>
 #include "memorycounter.h"
 
 #ifdef DEBUG
@@ -28,36 +29,36 @@ void* operator new(std::size_t size) throw(std::bad_alloc) {
   if(!p) throw std::bad_alloc();
   return p;
 }
-void* operator new  [](std::size_t size) throw(std::bad_alloc) {
+void* operator new[](std::size_t size) throw(std::bad_alloc) {
   ++allocations;
   void *p = malloc(size);
   if(!p) throw std::bad_alloc();
   return p;
 }
-void* operator new  [](std::size_t size, const std::nothrow_t&) throw() {
+void* operator new[](std::size_t size, const std::nothrow_t&) throw() {
   ++allocations;
   return malloc(size);
 }
-void* operator new   (std::size_t size, const std::nothrow_t&) throw() {
+void* operator new(std::size_t size, const std::nothrow_t&) throw() {
   ++allocations;
   return malloc(size);
 }
 
 
 void operator delete(void* ptr) throw() { 
-    free(ptr); 
-    ++deallocations; 
+    free(ptr);
+    ++deallocations;
 }
 void operator delete (void* ptr, const std::nothrow_t&) throw() { 
-    free(ptr); 
-    ++deallocations; 
+    free(ptr);
+    ++deallocations;
 }
 void operator delete[](void* ptr) throw() { 
-    free(ptr); 
-    ++deallocations; 
+    free(ptr);
+    ++deallocations;
 }
 void operator delete[](void* ptr, const std::nothrow_t&) throw() { 
-    free(ptr); 
-    ++deallocations; 
+    free(ptr);
+    ++deallocations;
 }
 #endif

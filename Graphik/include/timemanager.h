@@ -7,6 +7,7 @@ namespace Graphik
     {
     public: 
         TimeManager();
+        virtual ~TimeManager();
         
         void update();
         

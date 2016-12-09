@@ -20,8 +20,8 @@ public:
     TimeManager& timeManager();
 
 protected:
-    StateManager *p_stateManager;
-    TimeManager *p_timeManager;
+    StateManager p_stateManager;
+    TimeManager p_timeManager;
 private:
     void *m_window;
     void *m_context;

@@ -5,14 +5,14 @@ public:
     MainState(Graphik::Context *ctx);
     virtual ~MainState();
 
-    virtual void init();
-    virtual bool update();
-    virtual void draw();
-    virtual void exit(){};
+    void init();
+    bool update();
+    void draw() const;
+    void exit();
 private:
     Graphik::Context *m_ctx;
-    Graphik::Mesh *m_mesh;
+    Graphik::Mesh *m_mesh, *m_mesh2;
     Graphik::Shader *m_shader;
-    Graphik::Object *m_object;
+    Graphik::Object *m_object, *m_object2;
     Graphik::Texture *m_texture;
 };
