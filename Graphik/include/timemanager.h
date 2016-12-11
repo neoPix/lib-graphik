@@ -19,6 +19,7 @@ namespace Graphik
         unsigned long m_started;
         unsigned long m_appTime;
         unsigned long m_renderDuration;
+		unsigned long m_frameNumber;
     };
 }
 #endif

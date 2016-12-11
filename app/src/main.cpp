@@ -9,8 +9,15 @@ int app() {
     
     ctx.stateManager().change(state);
 
+	unsigned long timer = 0;
+
     while(!ctx.isClosed()) {
         ctx.update();
+		timer ++;
+		if(timer == 100) {
+			timer = 0;
+			std::cout << ctx.timeManager().fps() << "fps"  << std::endl;
+		}
     }
 
     return 0;

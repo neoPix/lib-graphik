@@ -8,7 +8,7 @@ public:
     void init();
     bool update();
     void draw() const;
-    void exit();
+    void end();
 private:
     Graphik::Context *m_ctx;
     Graphik::Mesh *m_mesh, *m_mesh2;

@@ -32,7 +32,6 @@ Graphik::Context::Context(int width, int height, const std::string& name)
 
 Graphik::Context::~Context()
 {
-    this->p_stateManager.exit();
     SDL_GL_DeleteContext(static_cast<SDL_GLContext*>(this->m_context));
     SDL_DestroyWindow(static_cast<SDL_Window*>(this->m_window));
     SDL_QuitSubSystem(SDL_INIT_EVERYTHING);

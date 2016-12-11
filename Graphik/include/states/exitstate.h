@@ -8,7 +8,7 @@ class ExitState : State
         void init() {}
         bool update() { return false; }
         void draw() const {}
-        void exit() {}
+        void end() {}
     protected:
     private:
 };

@@ -1,13 +1,14 @@
 #include "../main.h"
+#include <iostream>
 
-MainState::MainState(Graphik::Context *ctx) : m_ctx(ctx)
-{
+MainState::MainState(Graphik::Context *ctx) : m_ctx(ctx) {
 }
 
 MainState::~MainState() {
+	this->end();
 }
 
-void MainState::init(){
+void MainState::init() {
     this->m_mesh = new Graphik::Mesh("./../res/juliet.obj");
     this->m_mesh2 = new Graphik::Mesh("./../res/suzane.obj");
     this->m_shader = new Graphik::Shader("./../res/default");
@@ -25,7 +26,7 @@ void MainState::init(){
                     ->transform().scale(half);
 }
 
-void MainState::exit(){
+void MainState::end() {
     delete this->m_object;
     delete this->m_object2;
     delete this->m_mesh;
@@ -36,7 +37,7 @@ void MainState::exit(){
 
 float counter = 0.f;
 
-bool MainState::update(){
+bool MainState::update() {
     float sinCounter = sinf(counter),
         cosCounter = cosf(counter);
 
@@ -56,7 +57,7 @@ bool MainState::update(){
     return true;
 }
 
-void MainState::draw() const{
+void MainState::draw() const {
     this->m_ctx->clear(0,0,0,1);
     this->m_object->draw(this->m_camera);
     this->m_object2->draw(this->m_camera);

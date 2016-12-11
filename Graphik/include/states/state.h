@@ -13,7 +13,7 @@ class State
         virtual void init() = 0;
         virtual bool update() = 0;
         virtual void draw() const = 0;
-        virtual void exit() = 0;
+        virtual void end() = 0;
         
         const Camera& camera();
     protected:

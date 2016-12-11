@@ -10,7 +10,6 @@ class StateManager
         StateManager();
         virtual ~StateManager();
         
-        void exit();
         void change(State &state);
         bool update();
         void draw();

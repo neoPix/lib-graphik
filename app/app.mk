@@ -12,15 +12,15 @@ OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
-User                   :=David
-Date                   :=09/12/16
+User                   :=David Balan
+Date                   :=11/12/16
 CodeLitePath           :=/home/david/.codelite
-LinkerName             :=/usr/bin/g++
-SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
+LinkerName             :=g++
+SharedObjectLinkerName :=g++ -shared -fPIC
 ObjectSuffix           :=.o
 DependSuffix           :=.o.d
-PreprocessSuffix       :=.i
-DebugSwitch            :=-g 
+PreprocessSuffix       :=.o.i
+DebugSwitch            :=-gstab
 IncludeSwitch          :=-I
 LibrarySwitch          :=-l
 OutputSwitch           :=-o 
@@ -31,7 +31,7 @@ OutputFile             :=$(IntermediateDirectory)/$(ProjectName)
 Preprocessors          :=$(PreprocessorSwitch)DEBUG 
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
-PreprocessOnlySwitch   :=-E
+PreprocessOnlySwitch   :=-E 
 ObjectsFileList        :="app.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
@@ -47,13 +47,13 @@ LibPath                := $(LibraryPathSwitch). $(LibraryPathSwitch)../Graphik/D
 ## Common variables
 ## AR, CXX, CC, AS, CXXFLAGS and CFLAGS can be overriden using an environment variables
 ##
-AR       := /usr/bin/ar rcu
-CXX      := /usr/bin/g++
-CC       := /usr/bin/gcc
+AR       := ar rcus
+CXX      := g++
+CC       := gcc
 CXXFLAGS :=  -g -O0 -Wall $(Preprocessors)
 CFLAGS   :=  -g -O0 -Wall $(Preprocessors)
 ASFLAGS  := 
-AS       := /usr/bin/as
+AS       := as
 
 
 ##
@@ -97,7 +97,7 @@ $(IntermediateDirectory)/src_main.cpp$(DependSuffix): src/main.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/src_main.cpp$(DependSuffix) -MM src/main.cpp
 
 $(IntermediateDirectory)/src_main.cpp$(PreprocessSuffix): src/main.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_main.cpp$(PreprocessSuffix)src/main.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_main.cpp$(PreprocessSuffix) src/main.cpp
 
 $(IntermediateDirectory)/src_states_mainState.cpp$(ObjectSuffix): src/states/mainState.cpp $(IntermediateDirectory)/src_states_mainState.cpp$(DependSuffix)
 	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david/projects/Graphik/app/src/states/mainState.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_states_mainState.cpp$(ObjectSuffix) $(IncludePath)
@@ -105,7 +105,7 @@ $(IntermediateDirectory)/src_states_mainState.cpp$(DependSuffix): src/states/mai
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_states_mainState.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/src_states_mainState.cpp$(DependSuffix) -MM src/states/mainState.cpp
 
 $(IntermediateDirectory)/src_states_mainState.cpp$(PreprocessSuffix): src/states/mainState.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_states_mainState.cpp$(PreprocessSuffix)src/states/mainState.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_states_mainState.cpp$(PreprocessSuffix) src/states/mainState.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
