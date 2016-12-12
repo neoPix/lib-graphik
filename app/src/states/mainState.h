@@ -13,6 +13,6 @@ private:
     Graphik::Context *m_ctx;
     Graphik::Mesh *m_mesh, *m_mesh2;
     Graphik::Shader *m_shader;
-    Graphik::Object *m_object, *m_object2;
+    Graphik::Object *m_object, *m_object2, *m_object3;
     Graphik::Texture *m_texture;
 };

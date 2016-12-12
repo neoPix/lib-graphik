@@ -24,17 +24,17 @@ void Graphik::TimeManager::update()
     this->m_appTime = now;
 }
 
-float Graphik::TimeManager::fps()
+const float Graphik::TimeManager::fps()
 {
     return 1000 / this->m_renderDuration;
 }
 
-float Graphik::TimeManager::renderDuration() 
+const float Graphik::TimeManager::renderDuration() 
 {
-    return .0001f * this->m_renderDuration;
+    return .001f * this->m_renderDuration;
 }
 
-float Graphik::TimeManager::now() 
+const float Graphik::TimeManager::now() 
 {
-    return .0001f * getCurrentTime();
+    return .001f * getCurrentTime();
 }

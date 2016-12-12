@@ -5,15 +5,15 @@
 ## Debug
 ProjectName            :=app
 ConfigurationName      :=Debug
-WorkspacePath          :=/home/david/projects/Graphik
-ProjectPath            :=/home/david/projects/Graphik/app
+WorkspacePath          :=/home/david/projects/perso/graphik
+ProjectPath            :=/home/david/projects/perso/graphik/app
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=David Balan
-Date                   :=11/12/16
+Date                   :=12/12/16
 CodeLitePath           :=/home/david/.codelite
 LinkerName             :=g++
 SharedObjectLinkerName :=g++ -shared -fPIC
@@ -92,20 +92,20 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/src_main.cpp$(ObjectSuffix): src/main.cpp $(IntermediateDirectory)/src_main.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david/projects/Graphik/app/src/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_main.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david/projects/perso/graphik/app/src/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_main.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/src_main.cpp$(DependSuffix): src/main.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/src_main.cpp$(DependSuffix) -MM src/main.cpp
 
 $(IntermediateDirectory)/src_main.cpp$(PreprocessSuffix): src/main.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_main.cpp$(PreprocessSuffix) src/main.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_main.cpp$(PreprocessSuffix)src/main.cpp
 
 $(IntermediateDirectory)/src_states_mainState.cpp$(ObjectSuffix): src/states/mainState.cpp $(IntermediateDirectory)/src_states_mainState.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david/projects/Graphik/app/src/states/mainState.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_states_mainState.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david/projects/perso/graphik/app/src/states/mainState.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_states_mainState.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/src_states_mainState.cpp$(DependSuffix): src/states/mainState.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_states_mainState.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/src_states_mainState.cpp$(DependSuffix) -MM src/states/mainState.cpp
 
 $(IntermediateDirectory)/src_states_mainState.cpp$(PreprocessSuffix): src/states/mainState.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_states_mainState.cpp$(PreprocessSuffix) src/states/mainState.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_states_mainState.cpp$(PreprocessSuffix)src/states/mainState.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

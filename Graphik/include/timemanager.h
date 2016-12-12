@@ -11,9 +11,10 @@ namespace Graphik
         
         void update();
         
-        float renderDuration();
-        float fps();
-        float now();
+		const unsigned long frame() {return this-> m_frameNumber;}
+        const float renderDuration();
+        const float fps();
+        const float now();
         
     private:
         unsigned long m_started;

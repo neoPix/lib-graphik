@@ -5,10 +5,13 @@
 #include "shader/shader.h"
 #include "stream/textfile.h"
 
+class glUniform4fv;
 const unsigned int NUM_SHADERS = 2;
 
 enum {
     TRANSFORM_U,
+	CAMERA_U,
+	AMBIANT_U,
     NUM_UNIFORMS
 };
 
@@ -82,6 +85,8 @@ Graphik::Shader::Shader(const std::string& shader) {
     checkShader(data->m_program, GL_LINK_STATUS, true, "Invalid shader program");
 
     data->m_uniforms[TRANSFORM_U] = glGetUniformLocation(data->m_program, "transform");
+    data->m_uniforms[CAMERA_U] = glGetUniformLocation(data->m_program, "camera");
+    data->m_uniforms[AMBIANT_U] = glGetUniformLocation(data->m_program, "ambiant");
 }
 
 Graphik::Shader::~Shader() {
@@ -104,7 +109,9 @@ void Graphik::Shader::bind() {
 }
 
 void Graphik::Shader::update(const Graphik::Transform& transform, const Graphik::Camera& cam) {
-    glm::mat4 model = cam.projection() * transform.matrix();
     ShaderData* data = static_cast<ShaderData*>(this->m_data);
-    glUniformMatrix4fv(data->m_uniforms[TRANSFORM_U], 1, GL_FALSE, &model[0][0]);
+    glUniformMatrix4fv(data->m_uniforms[TRANSFORM_U], 1, GL_FALSE, &transform.matrix()[0][0]);
+    glUniformMatrix4fv(data->m_uniforms[CAMERA_U], 1, GL_FALSE, &cam.projection()[0][0]);
+	glm::vec4 ambiant(cam.ambiant());
+    glUniform4fv(data->m_uniforms[AMBIANT_U], 1, &ambiant.r);
 }
