@@ -65,6 +65,17 @@ void Graphik::Context::update() {
     }
 }
 
+const glm::ivec2 Graphik::Context::size() {
+	glm::ivec2 size(0);
+	SDL_GetWindowSize(static_cast<SDL_Window*>(this->m_window), &size.x, &size.y);
+	return size;
+}
+
+Graphik::Context& Graphik::Context::size(glm::ivec2 &size) {
+	SDL_SetWindowSize(static_cast<SDL_Window*>(this->m_window), size.x, size.y);
+	return (*this);
+}
+
 void Graphik::Context::clear(float r, float g, float b, float a) {
     glClearColor(r, g, b, a);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

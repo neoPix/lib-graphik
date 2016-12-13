@@ -27,11 +27,6 @@ int main()
 {
     int status = app();
     
-    unsigned long a = 0;
-    a -= 1;
-    
-    std::cerr << a << std::endl;
-    
     if(MemoryCounter::Leaking()) {
         std::cerr << "The app memory is leacking" << std::endl;
         std::cerr << MemoryCounter::Diff() << " remaining" << std::endl;

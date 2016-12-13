@@ -2,7 +2,7 @@
 #include <cassert>
 #include <iostream>
 #include "texture/texture.h"
-#include "libs/stb_image.h"
+#include "loaders/stb_image.h"
 
 struct TextureData {
 public:
@@ -13,8 +13,9 @@ Graphik::Texture::Texture(const std::string &path) {
     TextureData* data = new TextureData();
     this->m_data = data;
     
-    int width, height, numComponents;
-    unsigned char* imageData = stbi_load(path.c_str(), &width, &height, &numComponents, 4);
+    int numComponents;
+    unsigned char* imageData = stbi_load(path.c_str(), &this->m_size.x, &this->m_size.y, &numComponents, 4);
+	
     
     if(imageData == nullptr) {
         std::cerr << "Texture loading failed" << path << std::endl;
@@ -29,7 +30,7 @@ Graphik::Texture::Texture(const std::string &path) {
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, this->m_size.x, this->m_size.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
     }
     stbi_image_free(imageData);
 }
@@ -46,4 +47,8 @@ void Graphik::Texture::bind(unsigned int unit) {
     TextureData* data = static_cast<TextureData*>(this->m_data);
     glActiveTexture(GL_TEXTURE0 + unit);
     glBindTexture(GL_TEXTURE_2D, data->m_texture);
+}
+
+const glm::ivec2 Graphik::Texture::size() {
+    return this->m_size;
 }

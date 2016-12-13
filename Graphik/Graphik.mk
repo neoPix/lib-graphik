@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=David Balan
-Date                   :=12/12/16
+Date                   :=13/12/16
 CodeLitePath           :=/home/david/.codelite
 LinkerName             :=g++
 SharedObjectLinkerName :=g++ -shared -fPIC
@@ -61,7 +61,7 @@ AS       := as
 ##
 CodeLiteDir:=/usr/share/codelite
 Objects0=$(IntermediateDirectory)/src_context.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_timemanager.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_memorycounter.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_states_state.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_states_statemanager.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_object_object.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_mesh_mesh.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_mesh_indexedmodel.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_shader_shader.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_stream_textfile.cpp$(ObjectSuffix) \
-	$(IntermediateDirectory)/src_libs_stb_image.c$(ObjectSuffix) $(IntermediateDirectory)/src_texture_texture.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_transform_transform.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_camera_camera.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_mesh_loaders_Loader_OBJ.cpp$(ObjectSuffix) 
+	$(IntermediateDirectory)/src_texture_texture.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_transform_transform.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_camera_camera.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_mesh_loaders_Loader_OBJ.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_texture_loaders_stb_image.c$(ObjectSuffix) 
 
 
 
@@ -174,14 +174,6 @@ $(IntermediateDirectory)/src_stream_textfile.cpp$(DependSuffix): src/stream/text
 $(IntermediateDirectory)/src_stream_textfile.cpp$(PreprocessSuffix): src/stream/textfile.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_stream_textfile.cpp$(PreprocessSuffix)src/stream/textfile.cpp
 
-$(IntermediateDirectory)/src_libs_stb_image.c$(ObjectSuffix): src/libs/stb_image.c $(IntermediateDirectory)/src_libs_stb_image.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "/home/david/projects/perso/graphik/Graphik/src/libs/stb_image.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_libs_stb_image.c$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/src_libs_stb_image.c$(DependSuffix): src/libs/stb_image.c
-	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_libs_stb_image.c$(ObjectSuffix) -MF$(IntermediateDirectory)/src_libs_stb_image.c$(DependSuffix) -MM src/libs/stb_image.c
-
-$(IntermediateDirectory)/src_libs_stb_image.c$(PreprocessSuffix): src/libs/stb_image.c
-	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_libs_stb_image.c$(PreprocessSuffix)src/libs/stb_image.c
-
 $(IntermediateDirectory)/src_texture_texture.cpp$(ObjectSuffix): src/texture/texture.cpp $(IntermediateDirectory)/src_texture_texture.cpp$(DependSuffix)
 	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david/projects/perso/graphik/Graphik/src/texture/texture.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_texture_texture.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/src_texture_texture.cpp$(DependSuffix): src/texture/texture.cpp
@@ -213,6 +205,14 @@ $(IntermediateDirectory)/src_mesh_loaders_Loader_OBJ.cpp$(DependSuffix): src/mes
 
 $(IntermediateDirectory)/src_mesh_loaders_Loader_OBJ.cpp$(PreprocessSuffix): src/mesh/loaders/Loader_OBJ.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_mesh_loaders_Loader_OBJ.cpp$(PreprocessSuffix)src/mesh/loaders/Loader_OBJ.cpp
+
+$(IntermediateDirectory)/src_texture_loaders_stb_image.c$(ObjectSuffix): src/texture/loaders/stb_image.c $(IntermediateDirectory)/src_texture_loaders_stb_image.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/home/david/projects/perso/graphik/Graphik/src/texture/loaders/stb_image.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_texture_loaders_stb_image.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_texture_loaders_stb_image.c$(DependSuffix): src/texture/loaders/stb_image.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_texture_loaders_stb_image.c$(ObjectSuffix) -MF$(IntermediateDirectory)/src_texture_loaders_stb_image.c$(DependSuffix) -MM src/texture/loaders/stb_image.c
+
+$(IntermediateDirectory)/src_texture_loaders_stb_image.c$(PreprocessSuffix): src/texture/loaders/stb_image.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_texture_loaders_stb_image.c$(PreprocessSuffix)src/texture/loaders/stb_image.c
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

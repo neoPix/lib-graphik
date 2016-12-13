@@ -68,7 +68,7 @@
 // or create stb_image.h, #define STBI_HEADER_FILE_ONLY, and
 // then include stb_image.c from it.
 
-#include "libs/stb_image.h"
+#include "stb_image.h"
 
 #endif // STBI_INCLUDE_STB_IMAGE_H
 
@@ -4412,4 +4412,3 @@ int stbi_info_from_callbacks(stbi_io_callbacks const *c, void *user, int *x, int
              on 'test' only check type, not whether we support this variant
       0.50   first released version
 */
-

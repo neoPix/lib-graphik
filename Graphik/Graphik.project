@@ -32,11 +32,12 @@
     <VirtualDirectory Name="stream">
       <File Name="src/stream/textfile.cpp"/>
     </VirtualDirectory>
-    <VirtualDirectory Name="libs">
-      <File Name="src/libs/stb_image.c"/>
-    </VirtualDirectory>
     <VirtualDirectory Name="texture">
       <File Name="src/texture/texture.cpp"/>
+      <VirtualDirectory Name="loaders">
+        <File Name="src/texture/loaders/stb_image.h"/>
+        <File Name="src/texture/loaders/stb_image.c"/>
+      </VirtualDirectory>
     </VirtualDirectory>
     <VirtualDirectory Name="transform">
       <File Name="src/transform/transform.cpp"/>
@@ -68,9 +69,6 @@
     </VirtualDirectory>
     <VirtualDirectory Name="stream">
       <File Name="include/stream/textfile.h"/>
-    </VirtualDirectory>
-    <VirtualDirectory Name="libs">
-      <File Name="include/libs/stb_image.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="texture">
       <File Name="include/texture/texture.h"/>

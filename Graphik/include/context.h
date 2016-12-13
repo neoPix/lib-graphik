@@ -18,6 +18,9 @@ public:
 
     StateManager& stateManager();
     TimeManager& timeManager();
+	
+	const glm::ivec2 size();
+	Context& size(glm::ivec2 &size);
 
 protected:
     StateManager p_stateManager;
