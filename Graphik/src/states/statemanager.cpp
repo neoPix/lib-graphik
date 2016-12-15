@@ -8,6 +8,12 @@ Graphik::StateManager::~StateManager()
 {
 }
 
+void Graphik::StateManager::resized(glm::ivec2& size) {
+    if(this->m_state) {
+        this->m_state->camera().resized(size);
+    }
+}
+
 void Graphik::StateManager::change(State &state) {
     if(this->m_state) {
         this->m_state->end();

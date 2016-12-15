@@ -13,6 +13,8 @@ class StateManager
         void change(State &state);
         bool update();
         void draw();
+        
+        void resized(glm::ivec2& size);
     protected:
     private:
         State *m_state;

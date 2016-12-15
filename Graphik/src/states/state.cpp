@@ -9,6 +9,6 @@ Graphik::State::~State()
 }
 
 
-const Graphik::Camera& Graphik::State::camera() {
+Graphik::Camera& Graphik::State::camera() {
     return m_camera;
 }

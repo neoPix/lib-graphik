@@ -15,7 +15,7 @@ class State
         virtual void draw() const = 0;
         virtual void end() = 0;
         
-        const Camera& camera();
+        Camera& camera();
     protected:
         Camera m_camera;
     private:

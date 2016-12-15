@@ -5,7 +5,7 @@ MainState::MainState(Graphik::Context *ctx) : m_ctx(ctx) {
 }
 
 MainState::~MainState() {
-	this->end();
+    this->end();
 }
 
 void MainState::init() {
@@ -25,8 +25,8 @@ void MainState::init() {
                     ->shader(this->m_shader)
                     ->texture(this->m_texture)
                     ->transform().scale(half);
-					
-	this->m_object3->mesh(this->m_mesh)
+                    
+    this->m_object3->mesh(this->m_mesh)
                     ->shader(this->m_shader)
                     ->texture(this->m_texture);
 }
@@ -57,13 +57,13 @@ bool MainState::update() {
     this->m_object2->transform().pos().x = -sinCounter;
     this->m_object2->transform().rot().x = -cosCounter;
     this->m_object2->transform().rot().z = -sinCounter;
-	
-	this->m_object3->transform().rot().y = counter * 10;
-	this->m_object3->transform().pos().z = sinCounter * 4;
-	
-	glm::vec4 ambiant(cosCounter, sinCounter, 1, 1);
-	
-	this->m_camera.ambiant(ambiant);
+
+    this->m_object3->transform().rot().y = counter * 10;
+    this->m_object3->transform().pos().z = sinCounter * 4;
+
+    glm::vec4 ambiant(cosCounter, sinCounter, 1, 1);
+
+    this->m_camera.ambiant(ambiant);
 
     counter += 0.0025f;
 

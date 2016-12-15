@@ -16,7 +16,7 @@ Graphik::Context::Context(int width, int height, const std::string& name)
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,16);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
-    this->m_window = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL);
+    this->m_window = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL|SDL_WINDOW_RESIZABLE);
     this->m_context = SDL_GL_CreateContext(static_cast<SDL_Window*>(this->m_window));
 
     GLenum status = glewInit();
@@ -50,8 +50,21 @@ void Graphik::Context::update() {
     this->p_timeManager.update();
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
-        if(e.type == SDL_QUIT) {
-            this->m_quit = true;
+        switch(e.type) {
+            case SDL_QUIT:
+                this->m_quit = true;
+                break;
+            case SDL_WINDOWEVENT :
+            {
+                switch(e.window.event) {
+                    case SDL_WINDOWEVENT_RESIZED:
+                        glm::ivec2 size = this->size();
+                        glViewport(0, 0, size.x, size.y);
+                        this->p_stateManager.resized(size);
+                    break;
+                }
+            }
+            break;
         }
     }
 
@@ -66,14 +79,14 @@ void Graphik::Context::update() {
 }
 
 const glm::ivec2 Graphik::Context::size() {
-	glm::ivec2 size(0);
-	SDL_GetWindowSize(static_cast<SDL_Window*>(this->m_window), &size.x, &size.y);
-	return size;
+    glm::ivec2 size(0);
+    SDL_GetWindowSize(static_cast<SDL_Window*>(this->m_window), &size.x, &size.y);
+    return size;
 }
 
 Graphik::Context& Graphik::Context::size(glm::ivec2 &size) {
-	SDL_SetWindowSize(static_cast<SDL_Window*>(this->m_window), size.x, size.y);
-	return (*this);
+    SDL_SetWindowSize(static_cast<SDL_Window*>(this->m_window), size.x, size.y);
+    return (*this);
 }
 
 void Graphik::Context::clear(float r, float g, float b, float a) {
