@@ -10,8 +10,8 @@ const unsigned int NUM_SHADERS = 2;
 
 enum {
     TRANSFORM_U,
-	CAMERA_U,
-	AMBIANT_U,
+    CAMERA_U,
+    AMBIANT_U,
     NUM_UNIFORMS
 };
 
@@ -112,6 +112,6 @@ void Graphik::Shader::update(const Graphik::Transform& transform, const Graphik:
     ShaderData* data = static_cast<ShaderData*>(this->m_data);
     glUniformMatrix4fv(data->m_uniforms[TRANSFORM_U], 1, GL_FALSE, &transform.matrix()[0][0]);
     glUniformMatrix4fv(data->m_uniforms[CAMERA_U], 1, GL_FALSE, &cam.projection()[0][0]);
-	glm::vec4 ambiant(cam.ambiant());
+    glm::vec4 ambiant(cam.ambiant());
     glUniform4fv(data->m_uniforms[AMBIANT_U], 1, &ambiant.r);
 }

@@ -5,17 +5,30 @@
 #include "loaders/stb_image.h"
 
 struct TextureData {
+    TextureData() : m_texture(0) { }
 public:
     unsigned int m_texture;
 };
 
-Graphik::Texture::Texture(const std::string &path) {
-    TextureData* data = new TextureData();
-    this->m_data = data;
-    
+Graphik::Texture::Texture() {
+    this->m_data = new TextureData();
+}
+
+Graphik::Texture::Texture(const std::string &path) : Graphik::Texture::Texture() {
+    this->load(path);
+}
+
+Graphik::Texture::~Texture() {
+    TextureData* data = static_cast<TextureData*>(this->m_data);
+    glDeleteTextures(1, &data->m_texture);
+    delete data;
+}
+
+bool Graphik::Texture::load(const std::string& path) {
+    TextureData* data = static_cast<TextureData*>(this->m_data);
+
     int numComponents;
     unsigned char* imageData = stbi_load(path.c_str(), &this->m_size.x, &this->m_size.y, &numComponents, 4);
-	
     
     if(imageData == nullptr) {
         std::cerr << "Texture loading failed" << path << std::endl;
@@ -33,12 +46,6 @@ Graphik::Texture::Texture(const std::string &path) {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, this->m_size.x, this->m_size.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
     }
     stbi_image_free(imageData);
-}
-
-Graphik::Texture::~Texture() {
-    TextureData* data = static_cast<TextureData*>(this->m_data);
-    glDeleteTextures(1, &data->m_texture);
-    delete data;
 }
 
 void Graphik::Texture::bind(unsigned int unit) {

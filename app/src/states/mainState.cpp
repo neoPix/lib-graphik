@@ -16,19 +16,20 @@ void MainState::init() {
     this->m_object = new Graphik::Object();
     this->m_object2 = new Graphik::Object();
     this->m_object3 = new Graphik::Object();
+    this->m_material = new Graphik::Material(this->m_texture);
 
     this->m_object->mesh(this->m_mesh)
                     ->shader(this->m_shader)
-                    ->texture(this->m_texture);
+                    ->material(this->m_material);
     glm::vec3 half(.5);
     this->m_object2->mesh(this->m_mesh2)
                     ->shader(this->m_shader)
-                    ->texture(this->m_texture)
+                    ->material(this->m_material)
                     ->transform().scale(half);
                     
     this->m_object3->mesh(this->m_mesh)
                     ->shader(this->m_shader)
-                    ->texture(this->m_texture);
+                    ->material(this->m_material);
 }
 
 void MainState::end() {

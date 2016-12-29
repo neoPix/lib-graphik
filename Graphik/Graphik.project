@@ -38,6 +38,7 @@
         <File Name="src/texture/loaders/stb_image.h"/>
         <File Name="src/texture/loaders/stb_image.c"/>
       </VirtualDirectory>
+      <File Name="src/texture/material.cpp"/>
     </VirtualDirectory>
     <VirtualDirectory Name="transform">
       <File Name="src/transform/transform.cpp"/>
@@ -69,9 +70,11 @@
     </VirtualDirectory>
     <VirtualDirectory Name="stream">
       <File Name="include/stream/textfile.h"/>
+      <File Name="include/stream/loadable.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="texture">
       <File Name="include/texture/texture.h"/>
+      <File Name="include/texture/material.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="transform">
       <File Name="include/transform/transform.h"/>

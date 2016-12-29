@@ -12,12 +12,9 @@ namespace Graphik
     public: 
         Mesh(const std::string &path);
         virtual ~Mesh();
-        
         void draw();
-        
     private:
         void indexedModel(const IndexedModel &model);
-        
         void* m_data;
     };
 }

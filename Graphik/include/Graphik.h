@@ -15,6 +15,7 @@
 #include "shader/shader.h"
 
 #include "texture/texture.h"
+#include "texture/material.h"
 
 #include "camera/camera.h"
 #include "transform/transform.h"

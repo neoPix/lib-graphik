@@ -1,7 +1,7 @@
 #include "object/object.h"
 #include "transform/transform.h"
 
-Graphik::Object::Object() : m_mesh(nullptr), m_shader(nullptr), m_texture(nullptr) {
+Graphik::Object::Object() : m_mesh(nullptr), m_shader(nullptr), m_material(nullptr) {
 }
 
 Graphik::Object::~Object() {
@@ -12,8 +12,8 @@ void Graphik::Object::draw(const Camera& cam) {
         this->m_shader->update(this->m_transform, cam);
         this->m_shader->bind();
     }
-    if(this->m_texture) {
-        this->m_texture->bind(0);
+    if(this->m_material) {
+        this->m_material->bind();
     }
     if(this->m_mesh) {
         this->m_mesh->draw();
@@ -38,12 +38,12 @@ Graphik::Object* Graphik::Object::shader(Graphik::Shader* shader) {
     return this;
 }
 
-const Graphik::Texture* Graphik::Object::texture() {
-    return this->m_texture;
+const Graphik::Material* Graphik::Object::material() {
+    return this->m_material;
 }
 
-Graphik::Object* Graphik::Object::texture(Graphik::Texture* texture) {
-    this->m_texture = texture;
+Graphik::Object* Graphik::Object::material(Graphik::Material* material) {
+    this->m_material = material;
     return this;
 }
 

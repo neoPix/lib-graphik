@@ -3,7 +3,7 @@
 
 #include "mesh/mesh.h"
 #include "shader/shader.h"
-#include "texture/texture.h"
+#include "texture/material.h"
 #include "camera/camera.h"
 
 namespace Graphik
@@ -22,8 +22,8 @@ namespace Graphik
         const Shader* shader();
         Object* shader(Shader* mesh);
         
-        const Texture* texture();
-        Object* texture(Texture* texture);
+        const Material* material();
+        Object* material(Material* material);
         
         Transform& transform();
         Object* transform(const Transform& transform);
@@ -31,7 +31,7 @@ namespace Graphik
     private:
         Mesh *m_mesh;
         Shader *m_shader;
-        Texture *m_texture;
+        Material *m_material;
         Transform m_transform;
     };
 }

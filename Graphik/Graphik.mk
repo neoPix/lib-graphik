@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=David
-Date                   :=15/12/16
+Date                   :=29/12/16
 CodeLitePath           :=/home/david/.codelite
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
@@ -61,7 +61,7 @@ AS       := /usr/bin/as
 ##
 CodeLiteDir:=/usr/share/codelite
 Objects0=$(IntermediateDirectory)/src_context.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_timemanager.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_memorycounter.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_states_state.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_states_statemanager.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_object_object.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_mesh_mesh.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_mesh_indexedmodel.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_shader_shader.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_stream_textfile.cpp$(ObjectSuffix) \
-	$(IntermediateDirectory)/src_texture_texture.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_transform_transform.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_camera_camera.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_mesh_loaders_Loader_OBJ.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_texture_loaders_stb_image.c$(ObjectSuffix) 
+	$(IntermediateDirectory)/src_texture_texture.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_texture_material.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_transform_transform.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_camera_camera.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_mesh_loaders_Loader_OBJ.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_texture_loaders_stb_image.c$(ObjectSuffix) 
 
 
 
@@ -181,6 +181,14 @@ $(IntermediateDirectory)/src_texture_texture.cpp$(DependSuffix): src/texture/tex
 
 $(IntermediateDirectory)/src_texture_texture.cpp$(PreprocessSuffix): src/texture/texture.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_texture_texture.cpp$(PreprocessSuffix)src/texture/texture.cpp
+
+$(IntermediateDirectory)/src_texture_material.cpp$(ObjectSuffix): src/texture/material.cpp $(IntermediateDirectory)/src_texture_material.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david/projects/Graphik/Graphik/src/texture/material.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_texture_material.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_texture_material.cpp$(DependSuffix): src/texture/material.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_texture_material.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/src_texture_material.cpp$(DependSuffix) -MM src/texture/material.cpp
+
+$(IntermediateDirectory)/src_texture_material.cpp$(PreprocessSuffix): src/texture/material.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_texture_material.cpp$(PreprocessSuffix)src/texture/material.cpp
 
 $(IntermediateDirectory)/src_transform_transform.cpp$(ObjectSuffix): src/transform/transform.cpp $(IntermediateDirectory)/src_transform_transform.cpp$(DependSuffix)
 	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david/projects/Graphik/Graphik/src/transform/transform.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_transform_transform.cpp$(ObjectSuffix) $(IncludePath)
